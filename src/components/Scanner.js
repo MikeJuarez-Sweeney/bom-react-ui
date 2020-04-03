@@ -1,14 +1,18 @@
 import React from 'react';
+//Material UI Compnents
 import { makeStyles } from '@material-ui/core/styles'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
-import ViewListIcon from '@material-ui/icons/ViewList';
-import VerticalSplitIcon from '@material-ui/icons/VerticalSplit';
-import BackupIcon from '@material-ui/icons/Backup';
-import CompareIcon from '@material-ui/icons/Compare';
-import ImportExportIcon from '@material-ui/icons/ImportExport';
+//Images
+import Releases from '../Images/releases.png'
+import Gantt from '../Images/gantt.png'
+import SbomList from '../Images/sbom_list.png'
+import SbomTree from '../Images/sbom_tree.png'
+import BomBackup from '../Images/bom_backup.png'
+import BomCompare from '../Images/bom_compare.png'
+import UploadIcon from '../Images/upload-icon.png'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -16,9 +20,13 @@ const useStyles = makeStyles((theme) => ({
       maxWidth: 220,
       backgroundColor: theme.palette.background.paper,
     },
+    image: {
+        width: 30,
+        height: 30,
+    }
   }));
 
-export const SideBar = () => {
+export const Scanner = () => {
     const classes = useStyles();
     const [selectedIndex, setSelectedIndex] = React.useState(1);
   
@@ -36,7 +44,7 @@ export const SideBar = () => {
             onClick={(event) => handleListItemClick(event, 0)}
           >
             <ListItemIcon>
-              <VerticalSplitIcon />
+            <img src={Releases} alt="oops" className={classes.image}/>
             </ListItemIcon>
             <ListItemText primary="Releases List" />
           </ListItem>
@@ -45,9 +53,9 @@ export const SideBar = () => {
             button
             selected={selectedIndex === 1}
             onClick={(event) => handleListItemClick(event, 1)}
-          >
+          > 
             <ListItemIcon>
-              <VerticalSplitIcon />
+            <img src={Gantt} alt="oops" className={classes.image}/>
             </ListItemIcon>
             <ListItemText primary="Releases Gantt" />
           </ListItem>
@@ -58,18 +66,29 @@ export const SideBar = () => {
             onClick={(event) => handleListItemClick(event, 2)}
           >
             <ListItemIcon>
-              <ViewListIcon />
+            <img src={SbomList} alt="oops" className={classes.image}/>
             </ListItemIcon>
             <ListItemText primary="BOM List" />
           </ListItem>
           <ListItem
             divider="true"
             button
-            selected={selectedIndex === 3}
+            selected={selectedIndex === 0}
             onClick={(event) => handleListItemClick(event, 3)}
           >
             <ListItemIcon>
-              <ViewListIcon />
+            <img src={SbomTree} alt="oops" className={classes.image}/>
+            </ListItemIcon>
+            <ListItemText primary="Bom Tree" />
+          </ListItem>
+          <ListItem
+            divider="true"
+            button
+            selected={selectedIndex === 3}
+            onClick={(event) => handleListItemClick(event, 4)}
+          >
+            <ListItemIcon>
+            <img src={SbomList} alt="oops" className={classes.image}/>
             </ListItemIcon>
             <ListItemText primary="Out of Sync BOM List" />
           </ListItem>
@@ -77,10 +96,10 @@ export const SideBar = () => {
             divider="true"
             button
             selected={selectedIndex === 4}
-            onClick={(event) => handleListItemClick(event, 4)}
+            onClick={(event) => handleListItemClick(event, 5)}
           >
             <ListItemIcon>
-              <BackupIcon />
+            <img src={BomBackup} alt="oops" className={classes.image}/>
             </ListItemIcon>
             <ListItemText primary="BOM Backup" />
           </ListItem>
@@ -88,10 +107,10 @@ export const SideBar = () => {
             divider="true"
             button
             selected={selectedIndex === 5}
-            onClick={(event) => handleListItemClick(event, 5)}
+            onClick={(event) => handleListItemClick(event, 6)}
           >
             <ListItemIcon>
-              <CompareIcon />
+            <img src={BomCompare} alt="oops" className={classes.image}/>
             </ListItemIcon>
             <ListItemText primary="BOM Compare" />
           </ListItem>
@@ -99,10 +118,10 @@ export const SideBar = () => {
             divider="true"
             button
             selected={selectedIndex === 6}
-            onClick={(event) => handleListItemClick(event, 6)}
+            onClick={(event) => handleListItemClick(event, 7)}
           >
             <ListItemIcon>
-              <ImportExportIcon />
+            <img src={UploadIcon} alt="oops" className={classes.image}/>
             </ListItemIcon>
             <ListItemText primary="Import File" />
           </ListItem>
@@ -111,4 +130,4 @@ export const SideBar = () => {
     );
 }
 
-export default SideBar
+export default Scanner

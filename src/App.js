@@ -4,12 +4,15 @@ import MainPage from './components/MainPage'
 import './App.css'
 import 'typeface-roboto'
 import { ThemeProvider } from '@material-ui/core'
+import { BrowserRouter } from 'react-router-dom'
 
 function App() {
   return (
-    <ThemeProvider theme={bomTheme}>
-      <MainPage />
-    </ThemeProvider>  
+    <BrowserRouter>
+      <ThemeProvider theme={bomTheme}>
+        <MainPage />
+      </ThemeProvider>  
+    </BrowserRouter>
   );
 }
 
