@@ -1,4 +1,5 @@
 import React from 'react'
+import  { Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
@@ -31,16 +32,16 @@ export const TopBar = () => {
                     A Basic Composer
                 </Typography>
             <ButtonGroup variant="contained" color="primary" aria-label="contained primary button group">
-            <Button>Home</Button>
-            <Button>List</Button>
-            <Button>Timeline</Button>
-            <Button>Reports</Button>
-            <Button>Scanner</Button>
-            <Button>History</Button>
-            <Button>Trend</Button>
-            <Button>Setup</Button>
-            <Button>About</Button>
-            <Button>Help</Button>
+            <Button as={Link} to="/home">Home</Button>
+            <Button as={Link} to="/list">List</Button>
+            <Button as={Link} to="/timeline">Timeline</Button>
+            <Button as={Link} to="/reports">Reports</Button>
+            <Button as={Link} to="/scanner">Scanner</Button>
+            <Button as={Link} to="/history">History</Button>
+            <Button as={Link} to="/trend">Trend</Button>
+            <Button as={Link} to="/setup">Setup</Button>
+            <Button as={Link} to="/about">About</Button>
+            <Button as={Link} to="/help">Help</Button>
             </ButtonGroup>
 
             <Button color="inherit">Login</Button>

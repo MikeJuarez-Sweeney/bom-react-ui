@@ -1,9 +1,9 @@
 import { createMuiTheme } from '@material-ui/core/styles'
 
 export const bom = {
-    light: '#f1f3f4',
-    main: '#2a7886',
-    dark: '#512b58',
+    light: '#f6eedf',
+    main: '#d63447',
+    dark: '#f57b51',
     contrastText: '#fff',
 }
 
