@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link, Switch, Route } from 'react-router-dom'
+import BomList from '../scanner_sbom_list.php'
 //Material UI Compnents
 import { makeStyles } from '@material-ui/core/styles'
 import List from '@material-ui/core/List'
@@ -8,8 +9,6 @@ import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 import Grid from '@material-ui/core/Grid'
 //Images
-import Releases from '../Images/releases.png'
-import Gantt from '../Images/gantt.png'
 import SbomList from '../Images/sbom_list.png'
 import SbomTree from '../Images/sbom_tree.png'
 import BomBackup from '../Images/bom_backup.png'
@@ -23,8 +22,8 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: theme.palette.background.paper,
     },
     image: {
-        width: 30,
-        height: 30,
+        width: 40,
+        height: 40,
     }
   }));
 
@@ -39,110 +38,89 @@ export const Scanner = () => {
     return (
       <div className={classes.root}>
         <Grid container spacing={0}>
-          <List component="nav" aria-label="main mailbox folders">
+          <List component="nav">
             <ListItem
               as={Link}
-              to="/releases"
-              divider="true"
-              button
-              selected={selectedIndex === 0}
-              onClick={(event) => handleListItemClick(event, 0)}
-            >
-              <ListItemIcon>
-              <img src={Releases} alt="oops" className={classes.image}/>
-              </ListItemIcon>
-              <ListItemText primary="Releases List" />
-            </ListItem>
-            <ListItem
-              as={Link}
-              to="/releasesgantt"
-              divider="true"
-              button
-              selected={selectedIndex === 1}
-              onClick={(event) => handleListItemClick(event, 1)}
-            > 
-              <ListItemIcon>
-              <img src={Gantt} alt="oops" className={classes.image}/>
-              </ListItemIcon>
-              <ListItemText primary="Releases Gantt" />
-            </ListItem>
-            <ListItem
-              as={Link}
-              to="/bomlist"
-              divider="true"
-              button
-              selected={selectedIndex === 2}
-              onClick={(event) => handleListItemClick(event, 2)}
-            >
-              <ListItemIcon>
-              <img src={SbomList} alt="oops" className={classes.image}/>
-              </ListItemIcon>
-              <ListItemText primary="BOM List" />
-            </ListItem>
-            <ListItem
-              as={Link}
-              to="/bomtree"
+              to={"/scanner/scanner_sbom_list.php"}
               divider="true"
               button
               selected={selectedIndex === 3}
               onClick={(event) => handleListItemClick(event, 3)}
             >
               <ListItemIcon>
-              <img src={SbomTree} alt="oops" className={classes.image}/>
+              <img src={SbomList} alt="oops" className={classes.image}/>
               </ListItemIcon>
-              <ListItemText primary="Bom Tree" />
+              <ListItemText primary="&nbsp;&nbsp;BOM List" />
             </ListItem>
             <ListItem
               as={Link}
-              to="/outofsyncbomlist"
+              to="/bomtree"
               divider="true"
               button
               selected={selectedIndex === 4}
               onClick={(event) => handleListItemClick(event, 4)}
             >
               <ListItemIcon>
-              <img src={SbomList} alt="oops" className={classes.image}/>
+              <img src={SbomTree} alt="oops" className={classes.image}/>
               </ListItemIcon>
-              <ListItemText primary="Out of Sync BOM List" />
+              <ListItemText primary="&nbsp;&nbsp;Bom Tree" />
             </ListItem>
             <ListItem
               as={Link}
-              to="/bombackup"
+              to="/outofsyncbomlist"
               divider="true"
               button
               selected={selectedIndex === 5}
               onClick={(event) => handleListItemClick(event, 5)}
             >
               <ListItemIcon>
-              <img src={BomBackup} alt="oops" className={classes.image}/>
+              <img src={SbomList} alt="oops" className={classes.image}/>
               </ListItemIcon>
-              <ListItemText primary="BOM Backup" />
+              <ListItemText primary="&nbsp;&nbsp;Out of Sync &nbsp;&nbsp;BOM List" />
             </ListItem>
             <ListItem
               as={Link}
-              to="/bomcompare"
+              to="/bombackup"
               divider="true"
               button
               selected={selectedIndex === 6}
               onClick={(event) => handleListItemClick(event, 6)}
             >
               <ListItemIcon>
-              <img src={BomCompare} alt="oops" className={classes.image}/>
+              <img src={BomBackup} alt="oops" className={classes.image}/>
               </ListItemIcon>
-              <ListItemText primary="BOM Compare" />
+              <ListItemText primary="&nbsp;&nbsp;BOM Backup" />
             </ListItem>
             <ListItem
+              as={Link}
+              to="/bomcompare"
               divider="true"
               button
               selected={selectedIndex === 7}
               onClick={(event) => handleListItemClick(event, 7)}
             >
               <ListItemIcon>
+              <img src={BomCompare} alt="oops" className={classes.image}/>
+              </ListItemIcon>
+              <ListItemText primary="&nbsp;&nbsp;BOM Compare" />
+            </ListItem>
+            <ListItem
+              divider="true"
+              button
+              selected={selectedIndex === 8}
+              onClick={(event) => handleListItemClick(event, 8)}
+            >
+              <ListItemIcon>
               <img src={UploadIcon} alt="oops" className={classes.image}/>
               </ListItemIcon>
-              <ListItemText primary="Import File" />
+              <ListItemText primary="&nbsp;&nbsp;Import File" />
             </ListItem>
           </List>
+        </Grid>
+        <Grid item xs={10}>
+          <Switch>
+            <Route path="/scanner_sbom_list.php" component={BomList} />
+          </Switch>
         </Grid>
       </div>
     );
